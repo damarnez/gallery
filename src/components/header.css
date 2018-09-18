@@ -1,0 +1,23 @@
+.header{
+	display:inline-block;
+	margin:30px;
+}
+
+.header .title{
+	display:inline;
+	color:#000000;
+	font-size:35px;
+	font-weight: bold;
+}
+
+.header .user{
+	display:inline;
+	color:#000000;
+	font-size:18px;
+}
+
+.header .filter-view{
+	display:inline;
+	font-size:18px;
+	margin-left: 30px;
+}
