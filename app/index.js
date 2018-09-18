@@ -4,10 +4,13 @@ const defaultRoutes = require('./routes');
 const api = require('./routes/api');
 const bodyParser = require('body-parser');
 const path = require('path');
+const helmet = require('helmet');
 
 //Express configuration
+app.use(helmet()); //Segurity
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(bodyParser.json());
+//Routes
 app.use('/api',api);
 app.use('/',defaultRoutes);
 
