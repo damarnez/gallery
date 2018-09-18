@@ -7,7 +7,7 @@ const path = require('path');
 const helmet = require('helmet');
 
 //Express configuration
-app.use(helmet()); //Segurity
+app.use(helmet());
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(bodyParser.json());
 //Routes

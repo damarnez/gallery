@@ -1,7 +1,9 @@
+"use strict"
+
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 
 const htmlWebpackPlugin = new HtmlWebPackPlugin({
-  template: "./public/index.html",
+  template: "./src/index.html",
   filename: "./index.html"
 });
 

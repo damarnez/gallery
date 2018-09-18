@@ -6,12 +6,11 @@
   "proxy": "http://localhost:3000",
   "scripts": {
     "start": "node index.js",
-    "test:server": "jest --coverage || true --silent --collectCoverageFrom=app/**.js ",
-    "lint:server": "eslint app/**/*.js --silent",
+    "test:server": "jest --coverage || true --silent ",
+    "lint:server": "eslint app/**/*.js",
     "lint:server:force": "eslint app/**/*.js --fix",
     "start:web": "webpack-dev-server --mode development --open",
-    "build:web": "webpack --mode production",
-    "test:web": "jest test --env=jsdom"
+    "build:web": "webpack --mode production"
   },
   "author": "damarnez",
   "license": "ISC",
@@ -28,7 +27,9 @@
     "react-router-dom": "^4.3.1",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
-    "redux-thunk": "^2.3.0"
+    "redux-thunk": "^2.3.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
