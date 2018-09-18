@@ -6,7 +6,7 @@
   "proxy": "http://localhost:3000",
   "scripts": {
     "start": "node index.js",
-    "test:server": "jest --coverage || true --silent ",
+    "test": "jest --coverage || true --silent ",
     "lint:server": "eslint app/**/*.js",
     "lint:server:force": "eslint app/**/*.js --fix",
     "start:web": "webpack-dev-server --mode development --open",

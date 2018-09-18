@@ -1,3 +1,4 @@
+require('dotenv').config();
 const request = require('supertest');
 const app = require('./index');
 
@@ -17,7 +18,12 @@ describe('Test "/api/images"', () => {
             done();
         });
     });
-
+    it('Is a valid API KEY', (done) => {
+        request(app).get('/api/images').then((response) => {
+            expect(response.body.code).not.toBe(100);
+            done();
+        });
+    });
     it('It should response only 10 elements', (done) => {
         request(app).get('/api/images?size=10').then((response) => {
             expect(response.body.photos.perpage).toBe(10);

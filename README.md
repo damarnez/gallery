@@ -29,12 +29,12 @@ Create the file configuration in the project path .env
 
 ` 
  PORT=3000
- FLICKR_TOKEN=XXXX
- FLICKR_SECRET=XXXX
+ FLICKR_TOKEN=4de078e2f9ec39f41fdb0fee0b55a746
+ USER_ID=66956608@N06
 `
 
 
-####Test FRONT END 
+####Test
 
 ` npm test:web
 ` 
@@ -47,11 +47,6 @@ Create the file configuration in the project path .env
 ####Build FRONT END 
 
 ` build:web
-` 
-
-####Test BACK END
-
-` npm test:server
 ` 
 
 ####Launch proyect
