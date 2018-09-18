@@ -5,17 +5,20 @@ import { connect } from 'react-redux';
 import { getIsFetchingGalleryData, getGallery } from '../reducers';
 import Header from './header';
 import Container from './container';
+import ImageLoading from './imageLoading';
 class App extends Component {
 	
 	componentDidMount() {
 		this.fetchData();
+		this.handleShowLigthBox = this.handleShowLigthBox.bind(this);
+		this.handlePagination = this.handlePagination.bind(this);
 	}
 	fetchData() {
 		const { filter = {size:20, page:1}, fetchGalleryFromHost } = this.props;
 		fetchGalleryFromHost(filter);
 	}
-	handleShowLigthBox(){
-		 
+	handleShowLigthBox(event){
+		 console.log(event.target);
 	}
 	handlePagination(page) {
 		alert(`Version : ${page}`);
@@ -25,9 +28,12 @@ class App extends Component {
 		console.log(this.props.galleryData);
 		return (<React.Fragment>
 			<Header/>
-			<Container list={this.props.galleryData.photos}>
-				{({photo,i}) => {
-					return (<div key={i} > IMAGE </div>);
+			<Container list={this.props.galleryData.photos} onClick={this.handleShowLigthBox}>
+				{({ element, i}) => {
+					console.log(' ELEMENT : ',element)
+					//if(element && element.urls)
+					return (<ImageLoading key={i} shortImgUrl={element.urls.sImg} largeImgUrl={element.urls.lImg} />);
+					//return (<div>NO PHOTO </div>)
 				}}
 			</Container>
 		</React.Fragment>);
