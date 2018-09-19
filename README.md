@@ -14,42 +14,42 @@ TECHNICAL TEST
 
 ## Start
 
-####Requirements
+###Requirements
 
  - npm version 6.4.0
  - nodejs verion 10.6.0
 
-####Installation 
+###Installation 
 
  ` npm i
  `
-####Configuration file
+###Configuration file
 
 Create the file configuration in the project path .env 
 
 ` 
  PORT=3000
- FLICKR_TOKEN=4de078e2f9ec39f41fdb0fee0b55a746
+ FLICKR_TOKEN=11111111111111
  USER_ID=66956608@N06
 `
 
 
-####Test
+###Test
 
 ` npm test:web
 ` 
 
-####Devmode FRONT END 
+###Devmode FRONT END 
 
 ` start:web
 ` 
 
-####Build FRONT END 
+###Build FRONT END 
 
 ` build:web
 ` 
 
-####Launch proyect
+###Launch proyect
  
  - * This step require intallation and build the front end.
  
@@ -60,9 +60,9 @@ Create the file configuration in the project path .env
 
 
 
-####Server Code 
+###Server Code 
 The path of the server code are in ` /app`, including the tests.
 
 
-####React Code
+###React Code
 The path of the react code are in ` /app`, 
