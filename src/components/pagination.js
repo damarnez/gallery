@@ -38,26 +38,26 @@ class Pagination extends Component {
         this.props.onChangePage(page);
     }
  
-    getPager(totalItems, currentPage = 1, pageSize = 10) {
+    getPager(totalItems, currentPage = 1, pageSize = 7) {
  
         const totalPages = Math.ceil(totalItems / pageSize);
         
         let startPage, endPage;
         // less than 10 total pages so show all
-        if (totalPages <= 10) {
+        if (totalPages <= 7) {
             startPage = 1;
             endPage = totalPages;
         } else {
-            // more than 10 total pages so calculate start and end pages
-            if (currentPage <= 6) {
+            // more than 7 total pages so calculate start and end pages
+            if (currentPage <= 4) {
                 startPage = 1;
-                endPage = 10;
-            } else if (currentPage + 4 >= totalPages) {
-                startPage = totalPages - 9;
+                endPage = 7;
+            } else if (currentPage + 3 >= totalPages) {
+                startPage = totalPages - 7;
                 endPage = totalPages;
             } else {
-                startPage = currentPage - 5;
-                endPage = currentPage + 4;
+                startPage = currentPage - 3;
+                endPage = currentPage + 3;
             }
         }
         console.log('-currentPage: ',currentPage,' -- totalPages : ',totalPages, ' --- startPage:',startPage,' --- endPage', endPage, '--- total',totalItems);
@@ -87,10 +87,7 @@ class Pagination extends Component {
         return (
             <div className="center"><ul className="pagination">
                 <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(1)}>First</a>
-                </li>
-                <li className={pager.currentPage === 1 ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.currentPage - 1)}>Previous</a>
+                    <a onClick={() => this.setPage(pager.currentPage - 1)}>{"<<"}</a>
                 </li>
                 {pager.pages.map((page, index) =>
                     <li key={index} className={pager.currentPage === page ? 'active' : ''}>
@@ -98,10 +95,7 @@ class Pagination extends Component {
                     </li>
                 )}
                 <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.currentPage + 1)}>Next</a>
-                </li>
-                <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
-                    <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
+                    <a onClick={() => this.setPage(pager.currentPage + 1)}>{">>"}</a>
                 </li>
             </ul></div>
         );
