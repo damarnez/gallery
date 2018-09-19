@@ -49,14 +49,14 @@ Create the file configuration in the project path .env
 ` build:web
 ` 
 
-### Launch proyect
+### Launch project
  
  - * This step require intallation and build the front end.
  
 ` npm start
 ` 
 
-## Directory proyect
+## Directory project
 
 
 
