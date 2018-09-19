@@ -1,4 +1,4 @@
-TECHNICAL TEST LETGO
+TECHNICAL TEST
 =====================
 
 ## Specs
