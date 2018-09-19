@@ -1,0 +1,27 @@
+.pagination {
+	width: 100%;
+	font-size: 13px;
+    display: inline-block;
+}
+.center {
+    text-align: center;
+}
+.pagination li {
+    color: black;
+}
+.pagination a {
+    float: left;
+    padding: 8px 16px;
+    text-decoration: none;
+}
+
+li.active a {
+    background-color: #4CAF50;
+    color: white;
+}
+
+li.disabled a {
+    background-color: #4CAF50;
+    color: #c0c0c0;
+}
+.pagination a:hover:not(.active) {background-color: #ddd;}

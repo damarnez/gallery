@@ -5,9 +5,10 @@ const api = require('./routes/api');
 const bodyParser = require('body-parser');
 const path = require('path');
 const helmet = require('helmet');
-
+const cors = require('cors');
 //Express configuration
 app.use(helmet());
+app.use(cors());
 app.use(express.static(path.join(__dirname, '../dist')));
 app.use(bodyParser.json());
 //Routes

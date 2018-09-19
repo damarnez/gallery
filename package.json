@@ -10,12 +10,14 @@
     "lint:server": "eslint app/**/*.js",
     "lint:server:force": "eslint app/**/*.js --fix",
     "start:web": "webpack-dev-server --mode development --open",
-    "build:web": "webpack --mode production"
+    "build:web": "webpack --mode production",
+    "lint:web": "eslint src/**/*.js --fix"
   },
   "author": "damarnez",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.18.3",
+    "cors": "^2.8.4",
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "helmet": "^3.13.0",
