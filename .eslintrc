@@ -12,6 +12,20 @@
     "jest/no-focused-tests": "error",
     "jest/no-identical-title": "error",
     "jest/prefer-to-have-length": "warn",
-    "jest/valid-expect": "error"
+    "jest/valid-expect": "error",
+    "import/prefer-default-export":0,
+    "react/forbid-prop-types":0,
+    "react/no-did-update-set-state":0,
+    "max-len":0,
+    "react/jsx-filename-extension":0,
+    "jsx-a11y/anchor-is-valid":0,
+    "react/destructuring-assignment":0,
+    "class-methods-use-this":0,
+    "no-irregular-whitespace":0,
+    "react/no-array-index-key":0,
+    "jsx-a11y/no-static-element-interactions":0,
+    "jsx-a11y/click-events-have-key-events":0,
+    "no-class-assign":0,
+    "react/no-access-state-in-setstate":0
   }
 }

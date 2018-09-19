@@ -9,7 +9,7 @@ import queryString from 'query-string';
  *
  * Example
  *
- *	https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg
+ *  https://farm1.staticflickr.com/2/1418878_1e92283336_m.jpg
  * farm-id: 1
  * server-id: 2
  * photo-id: 1418878
@@ -29,12 +29,11 @@ const createUrlImages = photos => photos.map((data) => {
 
 
 export const getGalleryFromHost = (params) => {
-  console.log('## REQUEST PARAMS : ',params);
   const query = queryString.stringify(params);
   return fetch(`/api/images?${query}`).then(resp => resp.json()).then(results => ({
     size: params.size,
     page: params.page,
-    total: parseInt(results.photos.total),
+    total: parseInt(results.photos.total, 10),
     photos: createUrlImages(results.photos.photo),
   })).catch((err) => {
     throw err;

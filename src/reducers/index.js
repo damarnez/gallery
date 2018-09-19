@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux';
 
-const galleryData = (state = {size:20, page:1, photos: [], total: 0 }, action) => {
+const galleryData = (state = {
+  size: 20, page: 1, photos: [], total: 0,
+}, action) => {
   switch (action.type) {
     case 'RECEIVE_GALLERY':
       return action.response;
