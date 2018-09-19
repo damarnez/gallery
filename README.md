@@ -14,16 +14,16 @@ TECHNICAL TEST
 
 ## Start
 
-###Requirements
+### Requirements
 
  - npm version 6.4.0
  - nodejs verion 10.6.0
 
-###Installation 
+### Installation 
 
  ` npm i
  `
-###Configuration file
+### Configuration file
 
 Create the file configuration in the project path .env 
 
@@ -34,22 +34,22 @@ Create the file configuration in the project path .env
 `
 
 
-###Test
+### Test
 
 ` npm test:web
 ` 
 
-###Devmode FRONT END 
+### Devmode FRONT END 
 
 ` start:web
 ` 
 
-###Build FRONT END 
+### Build FRONT END 
 
 ` build:web
 ` 
 
-###Launch proyect
+### Launch proyect
  
  - * This step require intallation and build the front end.
  
@@ -60,9 +60,9 @@ Create the file configuration in the project path .env
 
 
 
-###Server Code 
-The path of the server code are in ` /app`, including the tests.
+### Server Code 
+The path ` /app`, including the tests.
 
 
-###React Code
-The path of the react code are in ` /app`, 
+### React Code
+The path ` /app`, including the tests. 
