@@ -20,11 +20,11 @@ const getData = async (params = {}, method) => {
     nojsoncallback: 1,
   };
   const composedUrl = `${url}?${queryString.stringify(query)}`;
-  try{
-  	const body = await request(composedUrl); 
+  try {
+    const body = await request(composedUrl);
     return JSON.parse(body);
-  }catch(error){
-  	return error;
+  } catch (error) {
+    return error;
   }
 };
 

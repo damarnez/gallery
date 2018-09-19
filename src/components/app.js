@@ -38,7 +38,6 @@ class App extends Component {
     fetchGalleryFromHost({ page: galleryData.page, size: galleryData.size });
   }
 
-
   handleshowLightBox(event) {
     const { className, dataset } = event.target;
     let { position } = dataset;
@@ -47,7 +46,6 @@ class App extends Component {
     }
     if (position > -1) this.setState({ lightBox: { show: true, selected: this.props.galleryData.photos[position], position: parseInt(position, 10) } });
   }
-
 
   handleCloseLigthBox(event) {
     event.preventDefault();
