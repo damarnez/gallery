@@ -65,4 +65,4 @@ The path ` /app`, including the tests.
 
 
 ### React Code
-The path ` /app`, including the tests. 
+The path ` /src`, including the tests. 
