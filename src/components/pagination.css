@@ -8,6 +8,7 @@
     text-align: center;
 }
 .pagination li {
+    cursor: pointer;
     color: black;
 }
 .pagination a {

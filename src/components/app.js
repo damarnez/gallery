@@ -4,50 +4,86 @@ import { connect } from 'react-redux';
 import * as actions from '../actions';
 import { getIsFetchingGalleryData, getGallery } from '../reducers';
 import Header from './header';
+import Loading from './loading';
 import Container from './container';
 import Card from './card';
 import Hover from './hover';
 import ImageLoading from './imageLoading';
+import LightBox from './lightBox';
 import Pagination from './pagination';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      lightBox:{
+        show:false,
+        selected:{},
+        position:0
+      }
+    };
+    this.handleshowLightBox = this.handleshowLightBox.bind(this);
+    this.handlePagination = this.handlePagination.bind(this);
+    this.handleCloseLigthBox = this.handleCloseLigthBox.bind(this);
+    this.handleNextLigthBox = this.handleNextLigthBox.bind(this);
+    this.handlePrevLigthBox = this.handlePrevLigthBox.bind(this);
+  }
   componentDidMount() {
     this.fetchData();
-    this.handleShowLigthBox = this.handleShowLigthBox.bind(this);
-    this.handlePagination = this.handlePagination.bind(this);
   }
-
   fetchData() {
     const { fetchGalleryFromHost, galleryData } = this.props;
     fetchGalleryFromHost({ page: galleryData.page, size: galleryData.size });
   }
-
-  handleShowLigthBox(event) {
-	  console.log(event.target);
+  handleshowLightBox(event) {
+    let position = event.target.dataset.position;
+    if(event.target.className === 'hover__hover'){
+      position =  event.target.childNodes[0].dataset.position;
+    } 
+    if(position > -1) this.setState({lightBox: { show:true, selected:this.props.galleryData.photos[position], position:parseInt(position) }});
   }
-
+  handleCloseLigthBox(event) {
+    event.preventDefault();
+    this.setState({lightBox:{show:false, position:0, selected: {}}})
+  }
+  handleNextLigthBox(event) {
+    event.preventDefault();
+    const nextPosition = this.state.lightBox.position + 1;
+    const nextSelected = this.props.galleryData.photos[nextPosition];
+    console.log('position:',this.state.lightBox.position,' next:',nextPosition,'nextSelected : ',nextSelected);
+    if(nextSelected) this.setState({lightBox:{show:true, position:nextPosition, selected: nextSelected}});
+  }
+  handlePrevLigthBox(event) {
+    event.preventDefault();
+    const prevPosition = this.state.lightBox.position - 1;
+    const prevSelected = this.props.galleryData.photos[prevPosition];
+    console.log('position:',this.state.lightBox.position,' prev:',prevPosition,'prevSelected : ',prevSelected);
+    if(prevSelected) this.setState({lightBox:{show:true, position:prevPosition, selected: prevSelected}});
+  }
   handlePagination(page) {
     if(!this.props.isFetching  && this.props && this.props.fetchGalleryFromHost && this.props.galleryData && this.props.galleryData.page !== page){
   	  this.props.fetchGalleryFromHost({ page, size: this.props.galleryData.size });
 	  }
   }
-
   render() {
     // Check if is done
-    if (this.props.isFetching || !this.props.galleryData || !this.props.galleryData.total === 0) return (<div> Loading ... </div>);
+    if (this.props.isFetching || !this.props.galleryData || !this.props.galleryData.total === 0) return (<Loading/>);
+    const ligthBoxObj = this.state.lightBox.show ? <LightBox onClose={this.handleCloseLigthBox} clickPrev={this.handlePrevLigthBox} clickNext={this.handleNextLigthBox} photo={this.state.lightBox.selected}/> : '';
+
     return (
       <React.Fragment>
         <Header />
-        <Container list={this.props.galleryData.photos} onClick={(ev) => this.handleShowLigthBox(ev)}>
+        <Container list={this.props.galleryData.photos} onClick={(ev) => this.handleshowLightBox(ev)}>
           {({ element, i }) => {
 				      return (<Card key={i} >
-                <Hover onHover={<div className='hover__text'> {element.data.owner} </div>}>
+                <Hover onHover={<div data-position={i} className='hover__text'> {element.data.owner} </div>}>
                   <ImageLoading  position={i} shortImgUrl={element.urls.sImg} largeImgUrl={element.urls.lImg} />
                 </Hover>
               </Card>);
           }}
         </Container>
-        <Pagination onChangePage={this.handlePagination.bind(this)} pageSize={this.props.galleryData.size} page={this.props.galleryData.page} totalItems={this.props.galleryData.total} />
+        <Pagination onChangePage={this.handlePagination} pageSize={this.props.galleryData.size} page={this.props.galleryData.page} totalItems={this.props.galleryData.total} />
+        {ligthBoxObj}
       </React.Fragment>
     );
   }

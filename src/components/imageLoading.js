@@ -2,13 +2,12 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import './imageLoading.css';
 
-class imageLoading extends Component {
+class ImageLoading extends Component {
   constructor(props) {
     super(props);
     this.largeImage = null;
   }
-
-  componentDidMount() {
+  loadImage(){
     const loaderImg = new Image();
 
     loaderImg.src = this.props.largeImgUrl;
@@ -23,16 +22,28 @@ class imageLoading extends Component {
       }
     };
   }
+  componentDidMount() {
+    this.loadImage();
+  }
+  componentDidUpdate(prevProps, prevState){
+    console.log(' UPDATE ??');
+    if(prevProps.shortImgUrl !== this.props.shortImgUrl || prevProps.largeImgUrl !== this.props.largeImgUrl) {
+        this.loadImage();
+    }
+       
+  }
 
   render() {
     return (
       <div className="iron-image-container">
 
         <div
+          data-position={this.props.position}
           className="iron-image-loaded"
           ref={imageLoadedElem => this.largeImage = imageLoadedElem}
         />
         <div
+          data-position={this.props.position}
           className="iron-image-preload"
           style={{ backgroundImage: `url('${this.props.shortImgUrl}')` }}
         />
@@ -42,4 +53,11 @@ class imageLoading extends Component {
   }
 }
 
-export default imageLoading;
+
+ImageLoading.propTypes = {
+    shortImgUrl: PropTypes.string.isRequired,
+    largeImgUrl: PropTypes.string.isRequired,
+    position : PropTypes.number
+};
+
+export default ImageLoading;
