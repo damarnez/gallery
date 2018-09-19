@@ -85,7 +85,7 @@ class Pagination extends Component {
         if(!pager || this.props.totalItems === 0 || !pager.pages || pager.pages.length === 0) return (<div> NO MORE DATA </div>);
  
         return (
-            <ul className="pagination center">
+            <div className="center"><ul className="pagination">
                 <li className={pager.currentPage === 1 ? 'disabled' : ''}>
                     <a onClick={() => this.setPage(1)}>First</a>
                 </li>
@@ -103,7 +103,7 @@ class Pagination extends Component {
                 <li className={pager.currentPage === pager.totalPages ? 'disabled' : ''}>
                     <a onClick={() => this.setPage(pager.totalPages)}>Last</a>
                 </li>
-            </ul>
+            </ul></div>
         );
     }
 }

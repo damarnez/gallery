@@ -6,7 +6,7 @@ class Container extends Component {
   render() {
     return (
       <div
-        className={`container ${this.props.showList ? 'grid' : ''}`}
+        className={`container grid`}
         onClick={(e) => {
           this.props.onClick(e);
         }}

@@ -5,6 +5,8 @@ import * as actions from '../actions';
 import { getIsFetchingGalleryData, getGallery } from '../reducers';
 import Header from './header';
 import Container from './container';
+import Card from './card';
+import Hover from './hover';
 import ImageLoading from './imageLoading';
 import Pagination from './pagination';
 
@@ -38,7 +40,11 @@ class App extends Component {
         <Header />
         <Container list={this.props.galleryData.photos} onClick={(ev) => this.handleShowLigthBox(ev)}>
           {({ element, i }) => {
-				      return (<ImageLoading key={i} position={i} shortImgUrl={element.urls.sImg} largeImgUrl={element.urls.lImg} />);
+				      return (<Card key={i} >
+                <Hover onHover={<div className='hover__text'> {element.data.owner} </div>}>
+                  <ImageLoading  position={i} shortImgUrl={element.urls.sImg} largeImgUrl={element.urls.lImg} />
+                </Hover>
+              </Card>);
           }}
         </Container>
         <Pagination onChangePage={this.handlePagination.bind(this)} pageSize={this.props.galleryData.size} page={this.props.galleryData.page} totalItems={this.props.galleryData.total} />

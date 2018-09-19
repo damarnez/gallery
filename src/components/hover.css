@@ -1,0 +1,22 @@
+.hover {
+  position: relative;
+}
+.hover:hover .hover__no-hover {
+  opacity: 0.4;
+}
+.hover:hover .hover__hover {
+  opacity: 1;
+}
+.hover__hover {
+  position: absolute;
+  top: 0;
+  opacity: 0;
+}
+.hover__no-hover {
+  opacity: 1;
+}
+.hover__text{
+  margin-top:100px;
+  width: 420px;
+  text-align: center;
+}

@@ -1,9 +1,10 @@
 .pagination {
-	width: 100%;
 	font-size: 13px;
-    display: inline-block;
+    display: inline-flex;
+    padding:0;
 }
 .center {
+    width: 100%;
     text-align: center;
 }
 .pagination li {
