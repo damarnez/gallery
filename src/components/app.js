@@ -25,8 +25,7 @@ class App extends Component {
     this.handleshowLightBox = this.handleshowLightBox.bind(this);
     this.handlePagination = this.handlePagination.bind(this);
     this.handleCloseLigthBox = this.handleCloseLigthBox.bind(this);
-    this.handleNextLigthBox = this.handleNextLigthBox.bind(this);
-    this.handlePrevLigthBox = this.handlePrevLigthBox.bind(this);
+    this.handleSubPagination = this.handleSubPagination.bind(this);
   }
 
   componentDidMount() {
@@ -52,18 +51,13 @@ class App extends Component {
     this.setState({ lightBox: { show: false, position: 0, selected: {} } });
   }
 
-  handleNextLigthBox(event) {
-    event.preventDefault();
-    const nextPosition = this.state.lightBox.position + 1;
-    const nextSelected = this.props.galleryData.photos[nextPosition];
-    if (nextSelected) this.setState({ lightBox: { show: true, position: nextPosition, selected: nextSelected } });
-  }
-
-  handlePrevLigthBox(event) {
-    event.preventDefault();
-    const prevPosition = this.state.lightBox.position - 1;
-    const prevSelected = this.props.galleryData.photos[prevPosition];
-    if (prevSelected) this.setState({ lightBox: { show: true, position: prevPosition, selected: prevSelected } });
+  handleSubPagination(op){
+    return (event) => {
+      event.preventDefault();
+      const newPosition = this.state.lightBox.position + op;
+      const newSelected = this.props.galleryData.photos[newPosition];
+      if (newSelected) this.setState({ lightBox: { show: true, position: newPosition, selected: newSelected } });
+    }
   }
 
   handlePagination(page) {
@@ -75,7 +69,7 @@ class App extends Component {
   render() {
     // Check if is done
     if (this.props.isFetching || !this.props.galleryData || !this.props.galleryData.total === 0) return (<Loading />);
-    const ligthBoxObj = this.state.lightBox.show ? <LightBox onClose={this.handleCloseLigthBox} clickPrev={this.handlePrevLigthBox} clickNext={this.handleNextLigthBox} photo={this.state.lightBox.selected} /> : '';
+    const ligthBoxObj = this.state.lightBox.show ? <LightBox onClose={this.handleCloseLigthBox} clickPrev={this.handleSubPagination(-1)} clickNext={this.handleSubPagination(1)} photo={this.state.lightBox.selected} /> : '';
 
     return (
       <React.Fragment>
