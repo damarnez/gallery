@@ -51,13 +51,13 @@ class App extends Component {
     this.setState({ lightBox: { show: false, position: 0, selected: {} } });
   }
 
-  handleSubPagination(op){
+  handleSubPagination(op) {
     return (event) => {
       event.preventDefault();
       const newPosition = this.state.lightBox.position + op;
       const newSelected = this.props.galleryData.photos[newPosition];
       if (newSelected) this.setState({ lightBox: { show: true, position: newPosition, selected: newSelected } });
-    }
+    };
   }
 
   handlePagination(page) {
